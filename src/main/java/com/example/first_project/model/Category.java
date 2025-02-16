@@ -1,4 +1,4 @@
-package model;
+package com.example.first_project.model;
 
 import lombok.Getter;
 import lombok.Setter;
