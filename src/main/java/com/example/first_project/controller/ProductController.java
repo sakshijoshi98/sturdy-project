@@ -4,16 +4,18 @@ import com.example.first_project.DTO.CreateProductRequestDto;
 import com.example.first_project.exception.ProductNotFoundException;
 import com.example.first_project.model.Product;
 import com.example.first_project.service.FakeStoreProductService;
+import com.example.first_project.service.ProductService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 
-public class ProductController {
+public class ProductController implements ProductService {
 
-    private FakeStoreProductService service;
-    public ProductController(FakeStoreProductService inputService) {
+    private ProductService service;
+    public ProductController(@Qualifier("selfProductService") ProductService inputService) {
          this.service = inputService;
     }
 
@@ -56,6 +58,11 @@ public class ProductController {
         //2. call the service layer
         List<Product> products = service.getAllProducts();
         return products;
+    }
+
+    @Override
+    public Product createProduct(String title, String catTitle, String description, String imageURL) {
+        return null;
     }
 
     @PutMapping("/products/{id}")

@@ -12,7 +12,7 @@ public class Product extends BaseModel{
     private String title;
     private String description;
     private String imageURL;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Category category;
 
 
@@ -48,4 +48,6 @@ public class Product extends BaseModel{
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
     }
+
+
 }
