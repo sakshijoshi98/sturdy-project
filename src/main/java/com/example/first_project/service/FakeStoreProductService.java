@@ -51,6 +51,7 @@ public class FakeStoreProductService {
         return product;
     }
 
+
     public List<Product> getAllProducts() {
         List<Product> response = new ArrayList<>();
 
@@ -84,3 +85,4 @@ public class FakeStoreProductService {
 
 
 }
+

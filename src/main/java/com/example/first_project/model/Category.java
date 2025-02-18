@@ -1,11 +1,19 @@
 package com.example.first_project.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.Entity;
 
-@Getter
-@Setter
-public class Category {
-    private Integer id;
+@Entity
+public class Category extends BaseModel{
+
     private String title;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+
 }
