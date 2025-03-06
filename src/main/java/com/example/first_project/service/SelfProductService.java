@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service("selfProductService")
 public class SelfProductService implements ProductService{
@@ -23,9 +24,24 @@ public class SelfProductService implements ProductService{
     @Override
     public Product getProductById(Integer id) {
         //this will do database call
-        Product response = productRepo.findById(id).get();
-        System.out.println("fetched product : " + response);
-        return response;
+
+        System.out.println("Inside getProductById.....");
+        Optional<Product> response = productRepo.findById(id);
+        if (!response.isPresent()) {
+            throw new IllegalArgumentException("Product not found");
+        }
+        System.out.println("Fetched product : " + response);
+
+        /**
+         * some sample test code below to test CAT REpo.
+         */
+
+//        List<Category> categories = categoryRepo.findAll();
+//        System.out.println("Fetched List of Categories....");
+//
+//        List<Product> productList = categories.get(0).getProducts();
+
+        return response.get();
     }
 
     @Override
